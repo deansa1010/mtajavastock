@@ -21,8 +21,10 @@ public class PortfolioService {
 	 */
 	
 	public Portfolio getPortfolio(){
-		
+
+		Portfolio myPortfolio = new Portfolio();
 		Date date = new java.util.Date();
+		myPortfolio.setBalance(10000);
 
 		Stock s1 = new Stock("PIH", 12.4f, 13.1f, date);
 		Stock s2 = new Stock("AAL",5.5f,5.78f,date);
@@ -40,7 +42,14 @@ public class PortfolioService {
 		myPortfolio.addStock(s2);
 		myPortfolio.addStock(s3);
 		
-		myPortfolio.setTitle("<h1>Portfolio 1#</h1>");
+		myPortfolio.buyStock("PIH", 20);
+		myPortfolio.buyStock("AAL", 30);
+		myPortfolio.buyStock("CAAS", 40);
+		
+		myPortfolio.sellStock("AAL", -1);
+		myPortfolio.removeStock("CAAS");
+		
+		myPortfolio.setTitle("<h1>Exersice 7 portfolio</h1>");
 
 		return myPortfolio;
 
