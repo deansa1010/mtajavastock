@@ -3,6 +3,7 @@ package com.mta.javacourse.service;
 import java.util.Date;
 
 import com.mta.javacourse.model.Portfolio;
+import com.mta.javacourse.model.Portfolio.StockStatus;
 import com.mta.javacourse.model.Stock;
 
 /**
@@ -13,7 +14,7 @@ import com.mta.javacourse.model.Stock;
  */
 
 public class PortfolioService {
-	private Portfolio myPortfolio = new Portfolio();
+	private Portfolio myPortfolio = new Portfolio("unknown", new Stock[5], new StockStatus[5],0,0);
 
 	/**
 	 * Set all the stock variables with the stock class
@@ -22,7 +23,7 @@ public class PortfolioService {
 	
 	public Portfolio getPortfolio(){
 
-		Portfolio myPortfolio = new Portfolio();
+		Portfolio myPortfolio = new Portfolio("unknown", new Stock[5], new StockStatus[5],0,0);
 		Date date = new java.util.Date();
 		myPortfolio.setBalance(10000);
 
