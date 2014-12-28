@@ -86,20 +86,8 @@ public class Portfolio {
 		balance = balance1;
 	}
 
-	/**
-	 * Constructor
-	 * @param title1
-	 * @param stocks1
-	 * @param stockStatus1
-	 * @param portfolioSize1
-	 */
-	/*public Portfolio(String title1,Stock[] stocks1,StockStatus[] stockStatus1,int portfolioSize1, float balance){
-		setTitle(title1);
-		setStocks(stocks1);
-		setStocksStatus(stockStatus1);
-		setPortfolioSize(portfolioSize1);
-	}*/
-
+	
+	
 	/**
 	 * Copy c'tor
 	 * @param portfolio
@@ -132,10 +120,11 @@ public class Portfolio {
 
 		if (portfolioSize < MAX_PORTFOLIO_SIZE ){
 			this.stocks[portfolioSize] = stock;
+			this.stockStatus[portfolioSize] = new StockStatus("string", 0, 0,  null, ALGO_RECOMANDATION.DO_NOTHING, 0);
 			this.stockStatus[portfolioSize].setCurrentAsk(stock.getAsk()); 
 			this.stockStatus[portfolioSize].setCurrentBid(stock.getBid());
 			this.stockStatus[portfolioSize].setSymbol(stock.getSymbol());
-			this.stockStatus[portfolioSize].setDate(stock.getDate());
+			this.stockStatus[portfolioSize].setDate(new Date(stock.getDate().getTime()));
 			this.stockStatus[portfolioSize].setRecommendation(ALGO_RECOMANDATION.DO_NOTHING);
 			this.stockStatus[portfolioSize].setStockQuantity(0);
 			this.portfolioSize++;
@@ -152,25 +141,22 @@ public class Portfolio {
  */
 
 public boolean removeStock(String symbol){
+	
+	for(int index = 0; index <= portfolioSize; index++){
 
-	for(int index = 0; index < portfolioSize; index++){
-
-		if(this.stocks[index].getSymbol() == symbol){
-			this.portfolioSize--;
+		 if(this.stocks[index].getSymbol() == symbol){
 			sellStock(stocks[index].getSymbol(), stockStatus[index].getStockQuantity());
-		}
-
-		for(int i = index; i <= portfolioSize-1; i++)
-		{
-			this.stocks[i] = this.stocks[i+1];
-			this.stockStatus[i] = this.stockStatus[i+1];
-
-		}
-		if(index == portfolioSize){
 			this.portfolioSize--;
+			for(int i = index; i <= portfolioSize-1; i++)
+			{
+				this.stocks[i] = this.stocks[i+1];
+				this.stockStatus[i] = this.stockStatus[i+1];
+				
+			}
 			return true;
 		}
 	}
+		
 	return false;
 }
 
@@ -248,7 +234,7 @@ public String getHtmlString(){
 
 	String getHtmlString = getTitle();
 
-	getHtmlString+= "<b>Total Portfolio Value: </b>" +getTotalValue(stocks)+"<b>$, Total stock value:</b>" +getStocksValue(stocks)+"<b>$, Balance:</b>" +getBalance()+"$";
+	getHtmlString+= "<b>Total Portfolio Value: </b>" +getTotalValue(stocks)+"<b>$, Total stock value:</b>" +getStocksValue(stocks)+"<b>$, Balance:</b>" +getBalance()+"$<br><br>";
 
 	for (int i = 0; i < portfolioSize; i++)
 		getHtmlString += stocks[i].getHtmlDescription()+"<br>";
@@ -277,8 +263,13 @@ public class StockStatus{
 	 * Copy c'tor
 	 */
 
-	public StockStatus(){
-
+	public StockStatus(String string, float bid, float ask, Date date1, ALGO_RECOMANDATION recom, int quantity){
+		symbol = string;
+		currentBid = bid;
+		currentAsk = ask;
+		date = date1;
+		recommendation = recom;
+		stockQuantity = quantity;
 	}
 
 	/**

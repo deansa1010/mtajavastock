@@ -14,7 +14,7 @@ import com.mta.javacourse.model.Stock;
  */
 
 public class PortfolioService {
-	private Portfolio myPortfolio = new Portfolio("unknown", new Stock[5], new StockStatus[5],0,0);
+	//private Portfolio myPortfolio = new Portfolio("unknown", new Stock[5], new StockStatus[5],0,0);
 
 	/**
 	 * Set all the stock variables with the stock class
@@ -27,9 +27,9 @@ public class PortfolioService {
 		Date date = new java.util.Date();
 		myPortfolio.setBalance(10000);
 
-		Stock s1 = new Stock("PIH", 12.4f, 13.1f, date);
-		Stock s2 = new Stock("AAL",5.5f,5.78f,date);
-		Stock s3 = new Stock("CAAS",31.5f,31.2f,date);
+		Stock s1 = new Stock("PIH", 10f, 8.5f, date);
+		Stock s2 = new Stock("AAL",30f,25.5f,date);
+		Stock s3 = new Stock("CAAS",20f,15.5f,date);
 
 		
 		date.setDate(15);
