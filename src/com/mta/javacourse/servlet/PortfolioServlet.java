@@ -24,7 +24,7 @@ public class PortfolioServlet extends HttpServlet{
 
 		PortfolioService portfolioService = new PortfolioService();
 		Portfolio portfolio = portfolioService.getPortfolio();
-		Stock[] stocks = portfolio.getStock();
+		Stock[] stocks = portfolio.getStocksStatus();
 		
 		//Portfolio portfolio2 = new Portfolio(portfolio);
 		

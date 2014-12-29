@@ -3,8 +3,8 @@ package com.mta.javacourse.service;
 import java.util.Date;
 
 import com.mta.javacourse.model.Portfolio;
-import com.mta.javacourse.model.Portfolio.StockStatus;
 import com.mta.javacourse.model.Stock;
+import com.mta.javacourse.model.StockStatus;
 
 /**
  * Represents a portfolio service
@@ -23,7 +23,7 @@ public class PortfolioService {
 	
 	public Portfolio getPortfolio(){
 
-		Portfolio myPortfolio = new Portfolio("unknown", new Stock[5], new StockStatus[5],0,0);
+		Portfolio myPortfolio = new Portfolio("unknown", new StockStatus[5],0,0);
 		Date date = new java.util.Date();
 		myPortfolio.setBalance(10000);
 
@@ -50,7 +50,7 @@ public class PortfolioService {
 		myPortfolio.sellStock("AAL", -1);
 		myPortfolio.removeStock("CAAS");
 		
-		myPortfolio.setTitle("<h1>Exersice 7 portfolio</h1>");
+		myPortfolio.setTitle("<h1>Exersice 8 portfolio</h1>");
 
 		return myPortfolio;
 
