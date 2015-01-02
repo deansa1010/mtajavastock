@@ -148,6 +148,12 @@ public boolean removeStock(String symbol){
 	return false;
 }
 
+/**
+ * sell stocks
+ * @param symbol
+ * @param quantity
+ * @return
+ */
 public boolean sellStock(String symbol, int quantity){
 
 	for(int i = 0; i < portfolioSize; i++)
@@ -172,6 +178,12 @@ public boolean sellStock(String symbol, int quantity){
 
 }
 
+/**
+ * buy stocks
+ * @param symbol
+ * @param quantity
+ * @return
+ */
 public boolean buyStock(String symbol, int quantity){
 
 	for(int i = 0; i < portfolioSize; i++)
@@ -198,6 +210,11 @@ public boolean buyStock(String symbol, int quantity){
 
 }
 
+/**
+ * gets the stocks value
+ * @param stock
+ * @return
+ */
 public float getStocksValue(Stock stock[]){
 
 	float totalStockValue = 0;
@@ -207,7 +224,11 @@ public float getStocksValue(Stock stock[]){
 
 	return totalStockValue;
 }
-
+/**
+ * get the total value of portfolio
+ * @param stock
+ * @return
+ */
 public float getTotalValue(Stock stock[]){
 
 	float portfolioValue = getBalance() + getStocksValue(stock);
@@ -215,6 +236,7 @@ public float getTotalValue(Stock stock[]){
 }
 
 /**
+ * print 
  * @return the getHtmlString
  */
 
