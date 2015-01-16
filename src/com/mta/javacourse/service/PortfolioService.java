@@ -21,7 +21,7 @@ public class PortfolioService {
 	 * @return myPortfolio with an array of stocks
 	 */
 	
-	public Portfolio getPortfolio(){
+	public Portfolio getPortfolio () throws Exception{
 
 		Portfolio myPortfolio = new Portfolio("unknown", new StockStatus[5],0,0);
 		Date date = new java.util.Date();
@@ -30,6 +30,7 @@ public class PortfolioService {
 		Stock s1 = new Stock("PIH", 10f, 8.5f, date);
 		Stock s2 = new Stock("AAL",30f,25.5f,date);
 		Stock s3 = new Stock("CAAS",20f,15.5f,date);
+		Stock s4 = new Stock("CAAS",20f,15.5f,date);
 
 		
 		date.setDate(15);
@@ -42,6 +43,7 @@ public class PortfolioService {
 		myPortfolio.addStock(s1);
 		myPortfolio.addStock(s2);
 		myPortfolio.addStock(s3);
+		myPortfolio.addStock(s4);
 		
 		myPortfolio.buyStock("PIH", 20);
 		myPortfolio.buyStock("AAL", 30);
@@ -50,7 +52,7 @@ public class PortfolioService {
 		myPortfolio.sellStock("AAL", -1);
 		myPortfolio.removeStock("CAAS");
 		
-		myPortfolio.setTitle("<h1>Exersice 8 portfolio</h1>");
+		myPortfolio.setTitle("<h1>Exersice 9 portfolio</h1>");
 
 		return myPortfolio;
 

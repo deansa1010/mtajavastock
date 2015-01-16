@@ -6,8 +6,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mta.javacourse.exception.BlanceException;
+import com.mta.javacourse.exception.PortfolioFullException;
+import com.mta.javacourse.exception.StockAlreadyExistExeption;
+import com.mta.javacourse.exception.StockNotExistException;
 import com.mta.javacourse.model.Portfolio;
-import com.mta.javacourse.model.Stock;
 import com.mta.javacourse.service.PortfolioService;
 
 /**
@@ -16,29 +19,35 @@ import com.mta.javacourse.service.PortfolioService;
  * @since 2014
  * @date 12/12/14
  */
-
+@SuppressWarnings("serial")
 public class PortfolioServlet extends HttpServlet{
 
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		resp.setContentType("text/html");
 
 		PortfolioService portfolioService = new PortfolioService();
-		Portfolio portfolio = portfolioService.getPortfolio();
-		Stock[] stocks = portfolio.getStocksStatus();
-		
-		//Portfolio portfolio2 = new Portfolio(portfolio);
-		
-		resp.getWriter().println(portfolio.getHtmlString() + "<br>");
-		//portfolio2.setTitle("<h1>Portfolio 2#</h1>");
-		//resp.getWriter().println(portfolio2.getHtmlString() + "<br>");
-	
-		
-		//resp.getWriter().println(portfolio.getHtmlString() + "<br>");
-		//resp.getWriter().println(portfolio2.getHtmlString() + "<br>");
-		
-		//portfolio2.getStock()[2].setBid(55.55f);
-		//resp.getWriter().println(portfolio.getHtmlString() + "<br>");
-		//resp.getWriter().println(portfolio2.getHtmlString() + "<br>");
+		Portfolio portfolio;
 
-	}
+		try {
+			portfolio = portfolioService.getPortfolio();
+			resp.getWriter().println(portfolio.getHtmlString() + "<br>");
+		} catch (BlanceException e1) {
+			resp.getWriter().println(e1.getMessage());
+		} catch (PortfolioFullException e2) {
+			resp.getWriter().println(e2.getMessage());
+		} catch (StockAlreadyExistExeption e3) {
+			resp.getWriter().println(e3.getMessage());
+		} catch (StockNotExistException e4) {
+			resp.getWriter().println(e4.getMessage());
+		} catch (Exception e) {
+		throw new RuntimeException(e);
+		}
+	} 
 }
+
+
+//resp.getWriter().println(portfolio.getHtmlString() + "<br>");
+
+
+
+

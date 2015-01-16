@@ -32,6 +32,8 @@ public class Stock {
 			setBid(bid1);
 			setDate(date1);
 		}
+		else
+			System.out.println("there arent stocks to copy");
 	}
 	
 	/**
