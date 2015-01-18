@@ -40,7 +40,7 @@ public class PortfolioServlet extends HttpServlet{
 		} catch (StockNotExistException e4) {
 			resp.getWriter().println(e4.getMessage());
 		} catch (Exception e) {
-		throw new RuntimeException(e);
+			throw new RuntimeException(e);
 		}
 	} 
 }

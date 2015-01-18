@@ -128,8 +128,10 @@ public class Portfolio {
 				portfolioSize++;
 			}
 		}
-		else System.out.println("Can’t add new stock, portfolio can have only "+portfolioSize+" stocks");
-		throw new PortfolioFullException(getPortfolioSize());
+		else {
+			System.out.println("Can’t add new stock, portfolio can have only "+portfolioSize+" stocks");
+			throw new PortfolioFullException(getPortfolioSize());
+		}
 	}
 
 
